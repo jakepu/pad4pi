@@ -70,6 +70,13 @@ class Keypad():
         GPIO.setmode(gpio_mode)
         self._set_rows_as_input()
         self._set_columns_as_output()
+        self.output_str = ''
+
+    def _initialize_str(self):
+        self.output_str = ''
+
+    def _log_to_str(self, key):
+        self.output_str += key
 
     def registerKeyPressHandler(self, handler):
         self._handlers.append(handler)
@@ -148,7 +155,23 @@ class Keypad():
 
         return key_val
 
+    
 
+
+    """
+    This function will backup and clear existing handlers, and start keylogging
+    """
+    def record_str_start(self):
+        self._handlers_backup = self._handlers.copy()
+        self._initialize_str()
+        self._handlers = [self._log_to_str]
+    """
+    This function will restore the backed-up handlers and return the keylog in string
+    """
+    def record_str_end(self):
+        self._handlers = self._handlers_backup.copy()
+        self._handlers_backup = None
+        return self.output_str
 
 if __name__ == "__main__":
     from pad4pi import rpi_gpio
