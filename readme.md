@@ -11,6 +11,7 @@ This repo is branched from [brettmclean/pad4pi](https://github.com/brettmclean/p
 ## Cautions
 
 1. Although the performance is better than the original one, you should always keep in mind that there is still a chance this library will give a wrong key value. The wrong key value will be the leftmost key of the row of the key you press. I welcome any productive patch to this library to fix this. To avoid this problem easily, simply hold the button a bit longer when you press it.
+2. **PUT A RESISTOR WITH VALUE > 200 OHM BETWEEN THE COLUMN PADS AND OUTPUT PINS TO AVOID SHORTING** [issue 16](https://github.com/brettmclean/pad4pi/pull/17/commits/254ac67c8ce71f1d788a02f2954fcb30a7b72f91)
 
 ## Usage
 

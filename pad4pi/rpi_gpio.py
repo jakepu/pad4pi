@@ -3,6 +3,14 @@ import time
 
 DEFAULT_KEY_DELAY = 300
 
+"""
+CAUTIONS
+1. if the button is released before it polls the column number,
+    this library will return the leftmost value in that row
+2. PUT A RESISTOR WITH VALUE > 200 OHM BETWEEN THE COLUMN PADS AND OUTPUT PINS 
+    TO AVOID SHORTING (https://github.com/brettmclean/pad4pi/pull/17/commits/254ac67c8ce71f1d788a02f2954fcb30a7b72f91)
+"""
+
 class KeypadFactory():
 
     def create_keypad(self, keypad=None, row_pins=None, col_pins=None, key_delay=DEFAULT_KEY_DELAY, gpio_mode=GPIO.BCM):
